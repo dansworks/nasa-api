@@ -7,37 +7,12 @@
 
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="api_key.js"></script>
+<script src="js/api_key.js"></script>
+<script src="js/main.js"></script>
 <script>
 
 
 var url = "https://api.nasa.gov/planetary/apod?api_key="+api_key;
-
-
-$.ajax({
-  url: url,
-  success: function(result){
-  if("copyright" in result) {
-    $("#copyright").text("Image Credits: " + result.copyright);
-  }
-  else {
-    $("#copyright").text("Image Credits: " + "Public Domain");
-  }
-  
-  if(result.media_type == "video") {
-    $("#apod_img_id").css("display", "none"); 
-    $("#apod_vid_id").attr("src", result.url);
-  }
-  else {
-    $("#apod_vid_id").css("display", "none"); 
-    $("#apod_img_id").attr("src", result.url);
-  }
-  $("#reqObject").text(url);
-  $("#returnObject").text(JSON.stringify(result, null, 4));  
-  $("#apod_explaination").text(result.explanation);
-  $("#apod_title").text(result.title);
-}
-});
 
 </script>
 <!DOCTYPE html>
