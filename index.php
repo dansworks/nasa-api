@@ -7,12 +7,14 @@
 
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
 <script src="js/api_key.js"></script>
+<script>var url = "https://api.nasa.gov/planetary/apod?api_key="+api_key;</script>
 <script src="js/main.js"></script>
 <script>
 
 
-var url = "https://api.nasa.gov/planetary/apod?api_key="+api_key;
+
 
 </script>
 <!DOCTYPE html>
@@ -27,7 +29,7 @@ var url = "https://api.nasa.gov/planetary/apod?api_key="+api_key;
   <pre id="reqObject"></pre>
   
   
-  <img id="apod_img_id" width="250px"/>
+  <img id="apod_img_id" />
   
   <iframe id="apod_vid_id" type="text/html" width="640" height="385" frameborder="0"></iframe>
   <p id="copyright"></p>
