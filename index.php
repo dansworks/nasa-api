@@ -14,30 +14,43 @@
 <script>
 
 
-
-
 </script>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <title>Example APOD call</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <title>Example APOD call. From NASA data</title>
 </head>
 <body>
-  <b>API URL:</b>
-  <pre id="reqObject"></pre>
+  <div class="container">
+    <br>
+ <!--  <b>API URL:</b> -->
+ <!--  <pre id="reqObject"></pre> -->
   
   
-  <img id="apod_img_id" />
-  
-  <iframe id="apod_vid_id" type="text/html" width="640" height="385" frameborder="0"></iframe>
+  <img class="img-responsive" id="apod_img_id" alt="NASA api APOD Call"/>
+ 
+  <div id="apod_vid_id" type="text/html" ></div>
   <p id="copyright"></p>
   
   <h3 id="apod_title"></h3>
   <p id="apod_explaination"></p>
   <br/>
-  <b>Return Object:</b>
-  <pre id="returnObject"></pre>
+ <!--  <b>Return Object:</b>
+  <pre id="returnObject"></pre> -->
+<br>
+<div><a href="https://api.nasa.gov/">Thank you to NASA for their public API!</a>
+  </div>
+</div><br><br>
 </body>
 </html>
