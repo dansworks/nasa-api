@@ -9,7 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 <script src="js/api_key.js"></script>
-<script>var url = "https://api.nasa.gov/planetary/apod?api_key="+api_key;</script>
+
 <script src="js/main.js"></script>
 <script>
 
@@ -43,9 +43,9 @@ span.glyphicon {
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span id="back" class="glyphicon glyphicon-chevron-left"></span>
     <span class="glyphicon glyphicon-play-circle"></span>
-    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span id="next" class="glyphicon glyphicon-chevron-right"></span>
    </div>
  </div>
     <br>
