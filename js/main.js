@@ -11,19 +11,27 @@ callnew(url);
 //var date_ent = year+'-'+month+'-'+day;
 
  $('#next').on('click', function() {
+  if(day <31) {
    day++ ;
    console.log(day);
   url = "https://api.nasa.gov/planetary/apod?date="+year+"-"+month+"-"+day+"&api_key="+api_key;
   
   console.log(url);
   callnew(url);
+    }else {console.log('not more than '+day);}
+
   });
  $('#back').on('click', function() {
-   day-- ;
+  if(day >1) {
+ day-- ;
    console.log(day);
+   
    url = "https://api.nasa.gov/planetary/apod?date="+year+"-"+month+"-"+day+"&api_key="+api_key;
    console.log(url);
+
    callnew(url);
+  }else{ console.log('not less than 1');}
+  
 
  });
 
