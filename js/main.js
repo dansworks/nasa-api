@@ -5,20 +5,21 @@ $(document).ready(function() {
 var dateobj= new Date() ;
 var month = dateobj.getMonth()+1;
 var day = dateobj.getDate();
+var day_today= dateobj.getDate();
 var year = dateobj.getFullYear();
 var url = "https://api.nasa.gov/planetary/apod?date="+year+"-"+month+"-"+day+"&api_key="+api_key;
 callnew(url);
 //var date_ent = year+'-'+month+'-'+day;
 
  $('#next').on('click', function() {
-  if(day <31) {
+  if(day < day_today) {
    day++ ;
    console.log(day);
   url = "https://api.nasa.gov/planetary/apod?date="+year+"-"+month+"-"+day+"&api_key="+api_key;
   
   console.log(url);
   callnew(url);
-    }else {console.log('not more than '+day);}
+    }else {console.log('not more than '+day_today);}
 
   });
  $('#back').on('click', function() {
