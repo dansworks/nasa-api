@@ -3,50 +3,8 @@
 // downloand sounds with nasa 
 //https://api.nasa.gov/api.html
 
-
-
 ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-<script src="js/api_key.js"></script>
-
-<script>var url ="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2016-8-29&camera=MAST&api_key="+api_key;</script>
-<script>
-$.ajax({
-  url: url,
-  success: function(result){
-   console.log(result);
-   console.log(result.photos[0]);
-   console.log(result.photos[0].img_src);
-   // console.log("photos" in resutl {}
- 
-    $("#img_id").attr("src", result.photos[0].img_src);
-    $("#img_id_1").attr("src", result.photos[1].img_src);
-  
-
-  if("copyright" in result) {
-    $("#copyright").text("Image Credits: " + result.copyright);
-  }
-  else {
-    $("#copyright").text("Image Credits: " + "Public Domain");
-  }
-  
-  if(result.media_type == "video") {
-    $("#apod_img_id").css("display", "none"); 
-    $("#apod_vid_id").attr("src", result.url);
-  }
-  else {
-   
-  }
-  $("#reqObject").text(url);
-  $("#returnObject").text(JSON.stringify(result, null, 4));  
-  $("#apod_explaination").text(result.explanation);
-  $("#apod_title").text(result.title);
-}
-});
-
-
-</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,15 +12,84 @@ $.ajax({
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <!-- Latest compiled and minified CSS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
+<script src="js/api_key.js"></script>
+
+<script></script>
+<script>
+$(document).ready(function() {
+
+//curiosity cams
+//FHAZ, RHAZ, MAST, CHEMCAM, MAHLI, MARDI, NAVCAM
+
+var sol= 1446;
+
+var dateobj= new Date() ;
+var month = dateobj.getMonth()+1;
+var day = dateobj.getDate();
+var day_today= dateobj.getDate();
+var year = dateobj.getFullYear();
+
+var url_curiosity ="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol="+sol+"&api_key="+api_key;
+var url_c_earthdate="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+year+"-"+month+"-"+(day-8)+"&api_key="+api_key;
+// var url_c_earthdate_1="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+year+"-"+month+"-"+day+"&api_key="+api_key;
+// var url_c_earthdate_1="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+year+"-"+month+"-"+day+"&api_key="+api_key;
+
+console.log(url_c_earthdate);
+callCuriosity(url_c_earthdate);
+//callCuriosity(url_curiosity);
+
+function callCuriosity(url) {
+$.ajax({
+  url: url,
+  success: function(result){
+
+   // console.log(result);
+   // console.log(result.photos[0]);
+   // console.log(result.photos[0].img_src);
+   // console.log("photos" in resutl {}
+  //var img_a_0 = result.photos[0].img_src.replace(/^http:\/\//i, 'https://');
+ //console.log(url);
+   // $("#img_id").attr("src", img_a);
+   // for(var i = 0; i<4; i++) {
+   //  $("#img_id_"+i+).attr("src", result.photos[i].img_src);
+for(var i = 0; i<result.photos.length; i++) {
+  console.log(result.photos.length);
+  console.log(Object.keys(result.photos));
+
+  var get_values = result.photos.map(function(a){return a.foo;});
+  console.log(get_values);
+  //var img_a_i = result.photos[i].img_src.replace(/^http:\/\//i, 'https://');
+
+  
+//    if(result.photos[i].img_src == "") {
+    
+// } else {
+
+  
+  // var img_create_i = '<img class="img-responsive" id="img_id'+i+'" alt="NASA curiosity '+i+'"/><br>';
+  // $("#images").prepend(img_create_i);
+  $("#img_id_"+i+"").attr("src", result.photos[i].img_src); 
+//}
+   
+
+   }
+
+}
+});
+}
+//$("#img_id_"+i+).attr("src", result.photos[i].img_src)
+});
+</script>
 <link href="css/a.css">
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 
 <!-- Latest compiled JavaScript -->
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
-  <title>Example APOD call. From NASA data</title>
+  <title>Example Curiosity. From NASA data</title>
 <style>
 span.glyphicon {
     font-size: 30px;
@@ -88,27 +115,24 @@ span.glyphicon-play-circle {
     <br>
  <!--  <b>API URL:</b> -->
  <!--  <pre id="reqObject"></pre> -->
-  
-  
-  <img class="img-responsive" id="img_id" alt="NASA api APOD Call"/>
-   
-  <img class="img-responsive" id="img_id_1" alt="NASA api APOD Call"/>
-  
+  <div id="images">
+   <?php 
+
+  for($j = 0; $j <25; $j++) {
+   echo '<img class="img-responsive" id="img_id_'.$j.'" alt="NASA curiosity '.$j.'"/><br>';
+ }
 
 
-  <div id="apod_vid_id" type="text/html" ></div>
-  <p id="copyright"></p>
-  
-  <h3 id="apod_title"></h3>
-  <p id="apod_explaination"></p>
+  ?>
+</div>
+ 
   <br/>
- <!--  <b>Return Object:</b>
-  <pre id="returnObject"></pre> -->
+
 <br>
 <div><a href="https://api.nasa.gov/">Thank you to NASA for their public API!</a>
   </div>
 
 </div><br><br>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </body>
 </html>
