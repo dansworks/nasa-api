@@ -32,7 +32,7 @@ var day_today= dateobj.getDate();
 var year = dateobj.getFullYear();
 
 var url_curiosity ="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol="+sol+"&api_key="+api_key;
-var url_c_earthdate="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+year+"-"+month+"-"+(day-8)+"&api_key="+api_key;
+var url_c_earthdate="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+year+"-"+month+"-"+(day-6)+"&api_key="+api_key;
 // var url_c_earthdate_1="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+year+"-"+month+"-"+day+"&api_key="+api_key;
 // var url_c_earthdate_1="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+year+"-"+month+"-"+day+"&api_key="+api_key;
 
@@ -45,41 +45,20 @@ $.ajax({
   url: url,
   success: function(result){
 
-   // console.log(result);
-   // console.log(result.photos[0]);
-   // console.log(result.photos[0].img_src);
-   // console.log("photos" in resutl {}
-  //var img_a_0 = result.photos[0].img_src.replace(/^http:\/\//i, 'https://');
- //console.log(url);
-   // $("#img_id").attr("src", img_a);
-   // for(var i = 0; i<4; i++) {
-   //  $("#img_id_"+i+).attr("src", result.photos[i].img_src);
 for(var i = 0; i<result.photos.length; i++) {
   console.log(result.photos.length);
-  console.log(Object.keys(result.photos));
 
-  var get_values = result.photos.map(function(a){return a.foo;});
-  console.log(get_values);
-  //var img_a_i = result.photos[i].img_src.replace(/^http:\/\//i, 'https://');
+  console.log(result.photos[i].img_src);
 
-  
-//    if(result.photos[i].img_src == "") {
-    
-// } else {
-
-  
-  // var img_create_i = '<img class="img-responsive" id="img_id'+i+'" alt="NASA curiosity '+i+'"/><br>';
-  // $("#images").prepend(img_create_i);
+  $("#imgTxt").append('<img id="img_id_'+i+'">');
   $("#img_id_"+i+"").attr("src", result.photos[i].img_src); 
-//}
-   
 
    }
 
 }
 });
 }
-//$("#img_id_"+i+).attr("src", result.photos[i].img_src)
+
 });
 </script>
 <link href="css/a.css">
@@ -113,21 +92,15 @@ span.glyphicon-play-circle {
    </div>
  </div> -->
     <br>
- <!--  <b>API URL:</b> -->
- <!--  <pre id="reqObject"></pre> -->
+ <div id="imgTxt"></div>
   <div id="images">
-   <?php 
-
-  for($j = 0; $j <25; $j++) {
-   echo '<img class="img-responsive" id="img_id_'.$j.'" alt="NASA curiosity '.$j.'"/><br>';
- }
 
 
-  ?>
 </div>
  
   <br/>
-
+ <!--  <b>Return Object:</b>
+  <pre id="returnObject"></pre> -->
 <br>
 <div><a href="https://api.nasa.gov/">Thank you to NASA for their public API!</a>
   </div>
