@@ -31,8 +31,9 @@ var day = dateobj.getDate();
 var day_today= dateobj.getDate();
 var year = dateobj.getFullYear();
 
+$("#dateC").append(year+"-"+month+"-"+(day));
 var url_curiosity ="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol="+sol+"&api_key="+api_key;
-var url_c_earthdate="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+year+"-"+month+"-"+(day-6)+"&api_key="+api_key;
+var url_c_earthdate="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+year+"-"+month+"-"+(day)+"&api_key="+api_key;
 // var url_c_earthdate_1="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+year+"-"+month+"-"+day+"&api_key="+api_key;
 // var url_c_earthdate_1="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+year+"-"+month+"-"+day+"&api_key="+api_key;
 
@@ -92,6 +93,10 @@ span.glyphicon-play-circle {
    </div>
  </div> -->
     <br>
+
+  
+    <div id="dateC"></div>
+  
  <div id="imgTxt"></div>
   <div id="images">
 
