@@ -41,64 +41,31 @@ var url_c_earthdate="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/ph
 console.log(url_c_earthdate);
 //callCuriosity(url_c_earthdate);
 callCuriosity(url_curiosity);
-var camera = 'MAST';
+
 function callCuriosity(url) {
 $.ajax({
   url: url,
   success: function(result){
-    
     console.log(result.photos.length);
     var numPhotos = result.photos.length;
-    //console.log(result.photos);
+    console.log(result.photos);
     console.log(result.photos[0].camera['name']);
     console.log(result.photos[0].camera);
-    //var img = result.photos[25].img_src;
-
-   // console.log(img);
-   // console.log(img.naturalHeight);
+    console.log(result.photos[1].camera['name']);
 
 for(var i = 0; i<result.photos.length; i++) {
  // console.log(result.photos.length);
 
  // console.log(result.photos[i].img_src);
-  if(result.photos[i].camera['name'] == camera) {
+  if(result.photos[i].camera['name'] == 'MAST') {
 
-  
-
-  $("#imgTxt").append('<img id="img_id_'+i+'">');
+      $("#imgTxt").append('<img id="img_id_'+i+'">');
   $("#img_id_"+i+"").attr("src", result.photos[i].img_src); 
-
-   var img = document.getElementById("img_id_"+i+""); 
-  // var width = img.clientWidth;
-  if(img.clientWidth > 600) {
-    //console.log(img.clientWidth+' more than 600');
-  } else {
-    //console.log(img.clientWidth+' less than 600');
-   // console
-
-    $("#img_id_"+i+"").remove();
-    console.log("img_id_"+i+"");
-
-    //$("#img_id_"+i+"").show();
-
-  }
-   
-
-
-   //console.log('test');
-
-  // console.log(width);
- // console.log(result.photos[i].img_src.height);
-  //console.log($("#img_id_"+i+"").height);
-  
   }
 
 
    }
-// var img = document.getElementById('img_id_198'); 
-// //or however you get a handle to the IMG
-//   var width = img.clientWidth;
-//   console.log(width);
+
 
 $("#numPhotos").append(numPhotos);
 }
@@ -118,9 +85,6 @@ $("#numPhotos").append(numPhotos);
   
   <title>Example Curiosity. From NASA data</title>
 <style>
-.noDisplay {
-  display: none;
-}
 span.glyphicon {
     font-size: 30px;
     opacity: .5; 

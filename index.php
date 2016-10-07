@@ -9,19 +9,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 <script src="js/api_key.js"></script>
-
+<script>var url = "https://api.nasa.gov/planetary/apod?date="+year+"-"+month+"-"+day+"&api_key="+api_key;</script>
 <script src="js/main.js"></script>
-<script>
 
-
-</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <link href="css/a.css">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -32,9 +29,13 @@
   <title>Example APOD call. From NASA data</title>
 <style>
 span.glyphicon {
-    font-size: 35px;
+    font-size: 30px;
     opacity: .5; 
 
+}
+span.glyphicon-play-circle {
+    margin: 30px;
+    z-index: 3;
 }
 
 </style>
@@ -44,7 +45,7 @@ span.glyphicon {
     <div class="row">
       <div class="col-xs-12">
     <span id="back" class="glyphicon glyphicon-chevron-left"></span>
-    <span class="glyphicon glyphicon-play-circle"></span>
+    <span id="play" class="glyphicon glyphicon-play-circle"></span>
     <span id="next" class="glyphicon glyphicon-chevron-right"></span>
    </div>
  </div>
@@ -68,5 +69,6 @@ span.glyphicon {
   </div>
 
 </div><br><br>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </body>
 </html>
