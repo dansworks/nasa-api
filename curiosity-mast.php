@@ -52,6 +52,7 @@ $.ajax({
     console.log(result.photos[0].camera['name']);
     console.log(result.photos[0].camera);
     console.log(result.photos[1].camera['name']);
+    console.log(result)
 
 for(var i = 0; i<result.photos.length; i++) {
  // console.log(result.photos.length);
@@ -59,8 +60,10 @@ for(var i = 0; i<result.photos.length; i++) {
  // console.log(result.photos[i].img_src);
   if(result.photos[i].camera['name'] == 'MAST') {
 
-      $("#imgTxt").append('<img id="img_id_'+i+'">');
+
+  $("#imgTxt").append('<img id="img_id_'+i+'">');
   $("#img_id_"+i+"").attr("src", result.photos[i].img_src); 
+  
   }
 
 

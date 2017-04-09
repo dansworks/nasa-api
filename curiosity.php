@@ -49,9 +49,10 @@ $.ajax({
     
     console.log(result.photos.length);
     var numPhotos = result.photos.length;
-    //console.log(result.photos);
-    console.log(result.photos[0].camera['name']);
-    console.log(result.photos[0].camera);
+    console.log(result.photos);
+    console.log(result);
+    // console.log(result.photos[0].camera['name']);
+    // console.log(result.photos[0].camera);
     //var img = result.photos[25].img_src;
 
    // console.log(img);
@@ -77,7 +78,7 @@ for(var i = 0; i<result.photos.length; i++) {
    // console
 
     $("#img_id_"+i+"").remove();
-    console.log("img_id_"+i+"");
+    //console.log("img_id_"+i+"");
 
     //$("#img_id_"+i+"").show();
 
